@@ -7,9 +7,16 @@ public class Point{
     
     public int compareTo( Object otherObj){
         // Fix this. Double.compare helped me.
-        return 0; // temp: all Points are One
+		Point otherPoint = (Point) otherObj;
+		
+		return Double.compare(distToOrigin(this), distToOrigin(otherPoint));
     }
 
+	private int distToOrigin (Point somePoint){
+		return (int) Math.sqrt( Math.pow(somePoint.xcor, 2) 
+						+ Math.pow(somePoint.ycor,2));
+	}
+	
     // -------- previously-written code ----------
     // constructor
     public Point( double xcor, double ycor) {

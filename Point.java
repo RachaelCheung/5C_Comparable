@@ -23,8 +23,8 @@ public class Point implements Comparable{
 		return Double.compare(distToOrigin(otherPoint), distToOrigin(this));
     }
 	
-	private int distToOrigin (Point somePoint){
-		return (int) Math.sqrt( Math.pow(somePoint.xcor, 2) 
+	private double distToOrigin (Point somePoint){
+		return Math.sqrt( Math.pow(somePoint.xcor, 2) 
 						+ Math.pow(somePoint.ycor,2));
 	}
 

@@ -1,22 +1,33 @@
 /**
   Represent a point, using Cartesian coordinates
  */
-public class Point{
+public class Point implements Comparable{
     private double xcor;
     private double ycor;
     
+    /**
+      @return  a negative integer, zero, or a positive integer
+      depending on whether this Point is closer, 
+      equidistant, or farther than the Point referred to
+      by the parameter.
+     */
     public int compareTo( Object otherObj){
-        // Fix this. Double.compare helped me.
-		Point otherPoint = (Point) otherObj;
+        /* Use the Pythagorean theorem.
+           Double.compare helped me.
+           If the math is a problem, use a simpler
+           relationship, like "higher is bigger"
+           and change the tests accordingly */
+		   
+        Point otherPoint = (Point) otherObj;
 		
-		return Double.compare(distToOrigin(this), distToOrigin(otherPoint));
+		return Double.compare(distToOrigin(otherPoint), distToOrigin(this));
     }
-
+	
 	private int distToOrigin (Point somePoint){
 		return (int) Math.sqrt( Math.pow(somePoint.xcor, 2) 
 						+ Math.pow(somePoint.ycor,2));
 	}
-	
+
     // -------- previously-written code ----------
     // constructor
     public Point( double xcor, double ycor) {

@@ -27,16 +27,48 @@ public class UserOfComparability {
         
         System.out.println( System.lineSeparator()
                           + "Date comparisons");
+						  
+		// Date comparisons
+        Date d0 = new Date(2019,  4,  4);
+		Date d1 = new Date(2002,  3, 24);
+		Date d2 = new Date(2020,  3, 24);
+		
+        reportRelationship( "Date vs. itself", d0, d0, "0");
+		
+		reportRelationship( "Date vs. past date", d0, d1, "positive int");
+		
+		reportRelationship( "Date vs. future date", d0, d2, "negative int");
+		
+		//Incomparable
+		
+		// IncomparableDog dog = new IncomparableDog();
+		// reportRelationship("Dog vs. itself", dog, dog, "error");
+		
+		/*
+		UserOfComparability.java:44: error: incompatible types: IncomparableDog cannot be converted to Comparable                              
+			reportRelationship("Dog vs. itself", dog, dog, "error"); 
+												 ^
+		*/
+		
+		reportRelationship( "Point vs. Date", p0, d0, "error");
+		
+		/*
+		Exception in thread "main" java.lang.ClassCastException: Point cannot be cast to Date
+			at Date.compareTo(Date.java:8)
+			at UserOfComparability.reportRelationship(UserOfComparability.java:72)
+			at UserOfComparability.main(UserOfComparability.java:52)
+		*/
+		
     }
 
 
     /**
-      run one test
+      Print the results of comparing two entities.
      */
     private static void reportRelationship 
       ( String description
-      , Point a
-      , Point b
+      , Comparable b
+      , Comparable a
       , String expect
       ) {
         System.out.println( description);
